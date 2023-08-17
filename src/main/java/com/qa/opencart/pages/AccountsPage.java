@@ -52,7 +52,6 @@ public class AccountsPage {
 	
 	public SearchResultsPage doSearch(String searchKey) {
 		WebElement searchField = eleUtil.waitForElementVisible(search, AppConstants.MEDIUM_TIME_OUT);
-		
 		searchField.clear();
 		searchField.sendKeys(searchKey);
 		eleUtil.doClick(sesrchIcon);

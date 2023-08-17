@@ -21,8 +21,8 @@ public class ProductInfoPage {
 	private By productImages = By.cssSelector("ul.thumbnails img");
 	private By quantity = By.name("quantity");
 	private By addToCartBtn = By.id("button-cart");
-	private By productMetaData = By.xpath("(//div[@id='content']//ul[@class='list-unstyled'])[1]/li");
-	private By productPriceData = By.xpath("(//div[@id='content']//ul[@class='list-unstyled'])[2]/li");
+	private By productMetaData = By.xpath("(//div[@id='content']//ul[@class='list-unstyled'])[1]/li"); //alternate xpath -- //div[@id='content']/div/div/following-sibling::div/ul[1]/li
+	private By productPriceData = By.xpath("(//div[@id='content']//ul[@class='list-unstyled'])[2]/li"); //alternate xpath -- //div[@id='content']/div/div/following-sibling::div/ul[2]/li
 	
 	private Map<String, String> productMap = new HashMap<String, String>(); 
 

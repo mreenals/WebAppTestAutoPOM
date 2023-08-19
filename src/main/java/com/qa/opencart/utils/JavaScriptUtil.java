@@ -101,19 +101,20 @@ public class JavaScriptUtil {
 	
 	public void flash(WebElement element) {
 		String bgcolor = element.getCssValue("backgroundColor");
-		for(int i=0; i<10; i++) {
-			chnageColor(bgcolor, element);
-			chnageColor(element.getCssValue("rgb(0, 200, 0)"), element);
+		for (int i = 0; i < 10; i++) {
+			changeColor("rgb(0,200,0)", element);// 1
+			changeColor(bgcolor, element);// 2
 		}
 	}
-	
-	public void chnageColor(String color, WebElement elelemnt) {
-		js.executeScript("arguments[0].style.backgroundColor = '" + color + "\'", elelemnt);
-		
+
+	private void changeColor(String color, WebElement element) {
+		JavascriptExecutor js = ((JavascriptExecutor) driver);
+		js.executeScript("arguments[0].style.backgroundColor = '" + color + "'", element);
+		//G->P->G->P
+
 		try {
-			Thread.sleep(20);
+			Thread.sleep(35);
 		} catch (InterruptedException e) {
-			e.printStackTrace();
 		}
 	}
 

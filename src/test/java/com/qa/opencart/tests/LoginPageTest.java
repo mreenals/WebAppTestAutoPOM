@@ -26,7 +26,7 @@ public class LoginPageTest extends BaseTest{
 	
 	@Test(priority = 4)
 	public void loginTest(){
-		accPage =  loginPage.doLogin("janautomation@gmail.com", "Selenium@12345");
+		accPage =  loginPage.doLogin(prop.getProperty("username"), prop.getProperty("password"));
 		Assert.assertEquals(accPage.getAccPageTitle(), AppConstants.ACCOUNTS_PAGE_TITLE);
 	}
 

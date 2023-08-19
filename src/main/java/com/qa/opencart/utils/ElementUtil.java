@@ -33,6 +33,7 @@ public class ElementUtil {
 	public ElementUtil(WebDriver driver) {
 		this.driver = driver;
 		act = new Actions(driver);
+		jsUtil = new JavaScriptUtil(driver);
 	}
 	
 
@@ -77,11 +78,10 @@ public class ElementUtil {
 	}
 
 	public WebElement getElement(By locator) {
-		
 		WebElement element = driver.findElement(locator);
-//		if(Boolean.parseBoolean(DriverFactory.highlight)) {
-//			jsUtil.flash(element);
-//		}
+		if(Boolean.parseBoolean(DriverFactory.highlight.trim())) {
+			jsUtil.flash(element);
+		}
 		return element;
 	}
 
@@ -267,12 +267,21 @@ public class ElementUtil {
 	 */
 	public WebElement waitForElementPresence(By locator, int timeOut) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
-		return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+		WebElement eleFound = wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+		if(Boolean.parseBoolean(DriverFactory.highlight.trim())) {
+			jsUtil.flash(eleFound);
+		}
+		return eleFound;
 	}
 	
 	public WebElement waitForElementPresence(By locator, int timeOut, int pollingTime) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut), Duration.ofSeconds(pollingTime));
-		return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+		WebElement eleFound = wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+		if(Boolean.parseBoolean(DriverFactory.highlight.trim())) {
+			jsUtil.flash(eleFound);
+		}
+		return eleFound;
+		
 	}
 	
 	/**
@@ -285,12 +294,20 @@ public class ElementUtil {
 	 */
 	public WebElement waitForElementVisible(By locator, int timeOut) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
-		return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+		WebElement eleFound = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+		if(Boolean.parseBoolean(DriverFactory.highlight.trim())) {
+			jsUtil.flash(eleFound);
+		}
+		return eleFound;
 	}
 	
 	public WebElement waitForElementVisible(By locator, int timeOut, int pollingTime) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut), Duration.ofSeconds(pollingTime));
-		return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+		WebElement eleFound = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+		if(Boolean.parseBoolean(DriverFactory.highlight.trim())) {
+			jsUtil.flash(eleFound);
+		}
+		return eleFound;
 	}
 	
 	

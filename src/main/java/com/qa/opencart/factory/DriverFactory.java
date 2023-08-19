@@ -1,5 +1,10 @@
 package com.qa.opencart.factory;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Properties;
+
 //import java.io.FileInputStream;
 //import java.io.FileNotFoundException;
 //import java.io.IOException;
@@ -13,12 +18,19 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class DriverFactory {
 	
 	WebDriver driver;
-	//Properties prop;
-	//OptionsManager optionsManager;
-	//public static String highlight;
+	Properties prop;
+	OptionsManager optionsManager;
+	public static String highlight;
 	
-	public WebDriver initDriver(String browserName) {
-		//String browserName = prop.getProperty("browser");  Properties prop (arg)
+	public WebDriver initDriver(Properties prop) {
+		
+		/**
+		 * This methos is used to initialize the driver 
+		 * @param browserName
+		 * @return it returns driver
+		 */
+		
+		String browserName = prop.getProperty("browser");  //Properties prop (arg)
 		
 		//String browserName = System.getProperty("browser");
 		
@@ -28,19 +40,19 @@ public class DriverFactory {
 		
 		System.out.println("Running on browser " + browserName);
 		
-		//highlight = prop.getProperty("highlight");
+		highlight = prop.getProperty("highlight");
 		
-		//optionsManager = new OptionsManager(prop);
+		optionsManager = new OptionsManager(prop);
 		
 		switch (browserName.toLowerCase()) {
 		case "chrome":
-			driver=new ChromeDriver();
+			driver=new ChromeDriver(optionsManager.getChromeOptions());
 			break;
 		case "firefox":
-			driver=new FirefoxDriver();
+			driver=new FirefoxDriver(optionsManager.getFirefoxOptions());
 			break;
 		case "edge":
-			driver=new EdgeDriver();
+			driver=new EdgeDriver(optionsManager.getEdgeOptions());
 			break;
 		default:
 			System.out.println("Please pass the right browser...." + browserName);
@@ -49,18 +61,24 @@ public class DriverFactory {
 		
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
-		driver.get("https://naveenautomationlabs.com/opencart/index.php?route=account/login");
-		//driver.get(prop.getProperty("url"));
+		driver.get(prop.getProperty("url"));
 		
 		return driver;
 	}
 	
-//	public Properties initProp() {
-//		
-//		//mvn clean install -Denv="qa"
-//		
-//		FileInputStream ip = null;  
-//		
+	public Properties initProp() {
+		
+		//mvn clean install -Denv="qa"
+		prop = new Properties();
+		try {
+			FileInputStream ip = new FileInputStream("./src/test/resources/config/config.properties");
+			prop.load(ip);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+		
 //		String envName = System.getProperty("env");
 //		System.out.println("env name is : "+envName);
 //		try {
@@ -70,7 +88,7 @@ public class DriverFactory {
 //		else {
 //			switch (envName.toLowerCase().trim()) {
 //			case "qa":
-//				ip = new FileInputStream("./src/test/resources/config/qa.config.properties");
+//				ip = new FileInputStream("./src/test/resources/config/config.properties");
 //				break;
 //			case "dev":
 //				ip = new FileInputStream("./src/test/resources/config/dev.config.properties");
@@ -100,9 +118,9 @@ public class DriverFactory {
 //		}catch(IOException e) {
 //			e.printStackTrace();
 //		}
-//		
-//		return prop;
-//		
-//	}
+		
+		return prop;
+		
+	}
 
 }

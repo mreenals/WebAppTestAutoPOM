@@ -53,13 +53,14 @@ public class ProductInfoPageTest extends BaseTest{
 		Assert.assertEquals(productInfoPage.getProductHeaderValue(), productName);
 	}
 	
-	@Test(dataProvider = "getProductSheetData")
-	public void productImagesCountTest(String searchKey, String productName, String expProductImgagesCount) {
+	@Test(dataProvider = "productData")
+	public void productImagesCountTest(String searchKey, String productName, int expProductImgagesCount) {
 		searchResPage = accPage.doSearch(searchKey);
 		productInfoPage = searchResPage.selectProduct(productName);
 		int actProductImgCount = productInfoPage.getProductImagesCount();
 		System.out.println("Actual product image count is: " + actProductImgCount);
-		Assert.assertEquals(actProductImgCount, Integer.parseInt(expProductImgagesCount));
+		//Assert.assertEquals(actProductImgCount, Integer.parseInt(expProductImgagesCount));
+		Assert.assertEquals(actProductImgCount, expProductImgagesCount);
 	}
 	
 	@Test

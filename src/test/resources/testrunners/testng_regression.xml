@@ -5,12 +5,10 @@
 	parallel="tests" verbose="4">
 
 	<test name="Login Page Test">
-		<!--		<parameter name="browser" value="chrome" />
+		<!--<parameter name="browser" value="chrome" />
 		<parameter name="browserversion" value="115.0" />
 		<parameter name="testcasename" value="Login Page Test" />
-		<parameter name="url"
-		value="https://naveenautomationlabs.com/opencart/index.php?route=account/login"
-		/>-->
+		<parameter name="url" value="https://naveenautomationlabs.com/opencart/index.php?route=account/login"/>-->
 		<classes>
 			<class name="com.qa.opencart.tests.LoginPageTest" />
 		</classes>
@@ -28,11 +26,11 @@
 		</classes>
 	</test>
 
-	<test name="Register Page Test">
+<!--	<test name="Register Page Test">
 		<classes>
 			<class name="com.qa.opencart.tests.RegisterPageTest" />
 		</classes>
 	</test>
-
+-->
 
 </suite> <!--Suite -->

@@ -47,6 +47,7 @@ public class RegisterPage {
 		eleUtil.waitForElementVisible(this.first_name, AppConstants.MEDIUM_TIME_OUT).sendKeys(first_name);
 		eleUtil.doSendKeys(this.last_name, last_name);
 		eleUtil.doSendKeys(this.email, email);
+		System.out.println("Email of " + first_name + " is:" + email);
 		eleUtil.doSendKeys(this.telephone, telephone);
 		eleUtil.doSendKeys(password, pwdString);
 		eleUtil.doSendKeys(pwdConfirm, pwdString);

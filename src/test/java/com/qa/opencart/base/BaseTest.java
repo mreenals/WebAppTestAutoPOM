@@ -22,8 +22,8 @@ public class BaseTest {
 	protected AccountsPage accPage;
 	protected SearchResultsPage searchResPage;
 	protected ProductInfoPage productInfoPage;
-	protected DriverFactory df;
 	protected RegisterPage rPage;
+	DriverFactory df;
 	
 	protected SoftAssert softAssert;
 	
@@ -31,7 +31,6 @@ public class BaseTest {
 	public void setup() {
 		df = new DriverFactory();
 		prop = df.initProp();
-		
 		
 		driver = df.initDriver(prop);
 		loginPage = new LoginPage(driver);

@@ -11,6 +11,11 @@ import com.qa.opencart.base.BaseTest;
 import com.qa.opencart.constants.AppConstants;
 import com.qa.opencart.utils.ExcelUtil;
 
+import io.qameta.allure.Epic;
+import io.qameta.allure.Story;
+
+@Epic("ECOMOPEN-103: Design the product info page for open cart app")
+@Story("OPNCRTLOG-3: Implement product info page features for open cart app")
 public class ProductInfoPageTest extends BaseTest{
 	
 	@BeforeClass

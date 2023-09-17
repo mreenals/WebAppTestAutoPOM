@@ -133,14 +133,14 @@ public class DriverFactory {
 	}
 	
 	/**
-	 * take screenshot 
+	 * take screenshot, create screenshot directory if it doesn't exist
 	 * @return 
 	 */
 	
-	public static String getScreenshot() {
+	public static String getScreenshot(String methodName) {
 		File srcFile = ((TakesScreenshot)getDriver()).getScreenshotAs(OutputType.FILE);
 		String screenshotDir = "./screenshot/";
-		String path = System.getProperty("user.dir")+"/screenshot/"+System.currentTimeMillis()+".png";
+		String path = System.getProperty("user.dir")+"/screenshot/"+ methodName + "_" + System.currentTimeMillis()+".png";
 		File destination = new File(path);
 		
 		Path sshotpath = Paths.get(screenshotDir);

@@ -1,2 +1,2 @@
 # WebAppTestAutoPOM
-this is open cart ui framework
+this is open cart ui test framework

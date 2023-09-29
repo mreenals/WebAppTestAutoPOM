@@ -19,6 +19,7 @@ public class AccountsPage {
 	private By accHeaders = By.cssSelector("div#content h2");
 	private By search = By.name("search");
 	private By sesrchIcon = By.cssSelector("div#search button");
+	private By wishListLink = By.xpath("//aside[@id='column-right']//a[contains(text(),'Wish List')]");
 	
 	public AccountsPage(WebDriver driver) {
 		this.driver = driver;
@@ -57,6 +58,12 @@ public class AccountsPage {
 		eleUtil.doClick(sesrchIcon);
 		//add more code for page chaining
 		return new SearchResultsPage(driver);
+	}
+	
+	public MyWishListPage doClickWishList() {
+		WebElement wishLink = eleUtil.waitForElementVisible(wishListLink, AppConstants.SHORT_TIME_OUT);
+		wishLink.click();
+		return new MyWishListPage(driver);
 	}
 
 }

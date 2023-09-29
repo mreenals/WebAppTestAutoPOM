@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Opencart App Test sanity test suite" thread-count="1"
+	parallel="tests" verbose="4">
+	
+	<listeners>
+		<listener class-name="com.qa.opencart.listeners.ExtentReportListener" />
+		<listener class-name="com.qa.opencart.listeners.TestAllureListener" />
+		<!--<listener class-name="com.qa.opencart.listeners.AnnotationTransformer" />-->
+	</listeners>
+
+	<test name="Login Page Test">
+		<!--<parameter name="browser" value="chrome" />
+		<parameter name="browserversion" value="115.0" />
+		<parameter name="testcasename" value="Login Page Test" />
+		<parameter name="url" value="https://naveenautomationlabs.com/opencart/index.php?route=account/login"/>-->
+		<classes>
+			<class name="com.qa.opencart.tests.LoginPageTest" />
+		</classes>
+	</test>
+<!--
+	<test name="Account Page Test">
+		<classes>
+			<class name="com.qa.opencart.tests.AccountPageTest" />
+		</classes>
+	</test>
+
+	<test name="ProductInfo Page Test">
+		<classes>
+			<class name="com.qa.opencart.tests.ProductInfoPageTest" />
+		</classes>
+	</test>
+
+	<test name="Register Page Test">
+		<classes>
+			<class name="com.qa.opencart.tests.RegisterPageTest" />
+		</classes>
+	</test>
+-->
+
+</suite> <!--Suite -->

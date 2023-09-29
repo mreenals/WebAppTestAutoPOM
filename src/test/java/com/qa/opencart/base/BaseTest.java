@@ -10,6 +10,7 @@ import org.testng.asserts.SoftAssert;
 import com.qa.opencart.factory.DriverFactory;
 import com.qa.opencart.pages.AccountsPage;
 import com.qa.opencart.pages.LoginPage;
+import com.qa.opencart.pages.MyWishListPage;
 import com.qa.opencart.pages.ProductInfoPage;
 import com.qa.opencart.pages.RegisterPage;
 import com.qa.opencart.pages.SearchResultsPage;
@@ -23,6 +24,7 @@ public class BaseTest {
 	protected SearchResultsPage searchResPage;
 	protected ProductInfoPage productInfoPage;
 	protected RegisterPage rPage;
+	protected MyWishListPage wishListPage;
 	DriverFactory df;
 	
 	protected SoftAssert softAssert;

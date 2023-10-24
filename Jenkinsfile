@@ -11,7 +11,7 @@ pipeline{
 			}
 			post{
 				success{
-					jnuit '**/traget/surefire-reports/TEST-*.xml'
+					junit '**/traget/surefire-reports/TEST-*.xml'
 					archiveArtifacts 'target/*.jar'
 				}
 			}

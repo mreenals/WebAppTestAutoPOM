@@ -6,8 +6,8 @@ pipeline{
 	stages{
 		stage('build'){
 			steps{
-				git url: 'https://github.com/jglick/simple-maven-project-with-tests.git'
-				"mvn -Dmaven.test.failure.ignore=true clean package"
+				git 'https://github.com/jglick/simple-maven-project-with-tests.git'
+				bat "mvn -Dmaven.test.failure.ignore=true clean package"
 			}
 			post{
 				success{
@@ -25,8 +25,8 @@ pipeline{
 		stage('Regression Automation Test'){
 			steps{
 				catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
-					git branch: 'opencart_basic_use_case', 'https://github.com/mreenals/WebAppTestAutoPOM.git'
-					"mvn clean test -Dsurefire.suiteXmlFiles=src/main/resources/testrunners/testng_regression.xml"
+					git 'https://github.com/mreenals/WebAppTestAutoPOM.git'
+					bat "mvn clean test -Dsurefire.suiteXmlFiles=src/main/resources/testrunners/testng_regression.xml"
 				}
 			}
 		}
@@ -66,8 +66,8 @@ pipeline{
 		stage('Sanity Automation Test'){
 			steps{
 				catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE'){
-					git branch: 'opencart_basic_use_case', url: 'https://github.com/mreenals/WebAppTestAutoPOM.git'
-					"mvn clean test -Dsurefire.suiteXmlFiles=src/main/resources/testrunners/testng_sanity.xml"
+					git 'https://github.com/mreenals/WebAppTestAutoPOM.git'
+					bat "mvn clean test -Dsurefire.suiteXmlFiles=src/main/resources/testrunners/testng_sanity.xml"
 				}
 			}
 		}
